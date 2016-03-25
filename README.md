@@ -73,6 +73,11 @@ Linux: [![Circle CI](https://circleci.com/gh/conda-forge/nn-feedstock.svg?style=
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/nn-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/nn-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/nn-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/nn-feedstock/branch/master)
 
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/nn/badges/version.svg)](https://anaconda.org/conda-forge/nn)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/nn/badges/downloads.svg)](https://anaconda.org/conda-forge/nn)
+
 
 Updating nn-feedstock
 =====================

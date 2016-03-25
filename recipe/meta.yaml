@@ -4,7 +4,7 @@ package:
 
 source:
     git_url: https://github.com/sakov/nn-c.git
-    git_tag: master  # upstream does not create releases :-(
+    git_tag: 33cbf70dec4f64836a26dcb4a885cb09b7279dd3
 
 build:
     number: 0
@@ -20,7 +20,7 @@ test:
 
 about:
     home: https://github.com/sakov/nn-c
-    license: Simplified BSD License and triangle.[c,h] license, which is non-free for commercial use
+    license: BSD-2-Clause (bundled triangle code is non-free for commercial use)
     summary: Natural Neighbours interpolation
 
 extra:

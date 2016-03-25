@@ -48,8 +48,8 @@ conda info
     set -x
     set +x
     conda build /recipe_root --quiet || exit 1
-    
+
     /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-    
-    
+
+
 EOF

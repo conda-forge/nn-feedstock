@@ -3,7 +3,7 @@ About nn
 
 Home: https://github.com/sakov/nn-c
 
-Package license: Simplified BSD License and triangle.[c,h] license, which is non-free for commercial use
+Package license: BSD-2-Clause (bundled triangle code is non-free for commercial use)
 
 Feedstock license: BSD
 

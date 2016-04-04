@@ -17,6 +17,7 @@ requirements:
 test:
     commands:
         - nnbathy -V
+        - conda inspect linkages -n _test nn  # [linux]
 
 about:
     home: https://github.com/sakov/nn-c

@@ -5,7 +5,7 @@ Home: https://github.com/sakov/nn-c
 
 Package license: BSD-2-Clause (bundled triangle code is non-free for commercial use)
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Natural Neighbours interpolation
 
@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/nn-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/nn-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/nn-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/nn-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/nn-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/nn-feedstock/branch/master)

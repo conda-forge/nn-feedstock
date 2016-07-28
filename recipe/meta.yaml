@@ -1,28 +1,28 @@
+{% set version = "1.86.0" %}
+{% set commit = "33cbf70dec4f64836a26dcb4a885cb09b7279dd3" %}
+
 package:
     name: nn
-    version: 1.86.0
+    version: {{ version }}
 
 source:
-    git_url: https://github.com/sakov/nn-c.git
-    git_tag: 33cbf70dec4f64836a26dcb4a885cb09b7279dd3
+    fn: {{ commit }}.tar.gz
+    url: https://github.com/sakov/nn-c/archive/{{ commit }}.tar.gz
+    sha256: eb00f951bbe36e933d16de520db44acf93e9becf6e0182e391c1c7f98441972b
 
 build:
-    number: 0
+    number: 1
     skip: True  # [win]
-
-requirements:
-    run:
-        - libgcc
 
 test:
     commands:
         - nnbathy -V
-        - conda inspect linkages -n _test nn  # [linux]
+        - conda inspect linkages -n _test nn  # [not win]
 
 about:
     home: https://github.com/sakov/nn-c
-    license: BSD-2-Clause (bundled triangle code is non-free for commercial use)
-    summary: Natural Neighbours interpolation
+    license: BSD 2-Clause (bundled triangle code is non-free for commercial use)
+    summary: 'Natural Neighbours interpolation.'
 
 extra:
     recipe-maintainers:

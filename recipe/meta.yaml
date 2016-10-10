@@ -2,28 +2,28 @@
 {% set commit = "33cbf70dec4f64836a26dcb4a885cb09b7279dd3" %}
 
 package:
-    name: nn
-    version: {{ version }}
+  name: nn
+  version: {{ version }}
 
 source:
-    fn: {{ commit }}.tar.gz
-    url: https://github.com/sakov/nn-c/archive/{{ commit }}.tar.gz
-    sha256: eb00f951bbe36e933d16de520db44acf93e9becf6e0182e391c1c7f98441972b
+  fn: {{ commit }}.tar.gz
+  url: https://github.com/sakov/nn-c/archive/{{ commit }}.tar.gz
+  sha256: eb00f951bbe36e933d16de520db44acf93e9becf6e0182e391c1c7f98441972b
 
 build:
-    number: 1
-    skip: True  # [win]
+  number: 1
+  skip: True  # [win]
 
 test:
-    commands:
-        - nnbathy -V
-        - conda inspect linkages -n _test nn  # [not win]
+  commands:
+    - nnbathy -V
+    #- conda inspect linkages -p $PREFIX nn  # [not win]
 
 about:
-    home: https://github.com/sakov/nn-c
-    license: BSD 2-Clause (bundled triangle code is non-free for commercial use)
-    summary: 'Natural Neighbours interpolation.'
+  home: https://github.com/sakov/nn-c
+  license: BSD 2-Clause (bundled triangle code is non-free for commercial use)
+  summary: 'Natural Neighbours interpolation.'
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
+  recipe-maintainers:
+    - ocefpaf

@@ -12,15 +12,19 @@ source:
 
 build:
   number: 2
-  skip: True  # [win]
 
 requirements:
   build:
     - toolchain
+    - posix  # [win]
+    - m2w64-toolchain  # [win]
 
 test:
   commands:
-    - nnbathy -V
+    - nnbathy -V  # [not win]
+    - nnbathy.exe -V  # [win]
+    - minell -V  # [not win]
+    - minell.exe -V  # [win]
     - conda inspect linkages -p $PREFIX nn  # [not win]
     - conda inspect objects -p $PREFIX nn  # [osx]
 

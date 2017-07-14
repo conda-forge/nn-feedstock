@@ -23,6 +23,8 @@ test:
   commands:
     - nnbathy -V  # [not win]
     - nnbathy.exe -V  # [win]
+    - minell -V  # [not win]
+    - minell.exe -V  # [win]
     - conda inspect linkages -p $PREFIX nn  # [not win]
     - conda inspect objects -p $PREFIX nn  # [osx]
 

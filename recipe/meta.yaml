@@ -31,6 +31,7 @@ test:
 about:
   home: https://github.com/sakov/nn-c
   license: BSD 2-Clause (bundled triangle code is non-free for commercial use)
+  license_file: LICENSE
   summary: 'Natural Neighbours interpolation.'
 
 extra:

@@ -12,21 +12,26 @@ source:
 
 build:
   number: 2
-  skip: True  # [win]
 
 requirements:
   build:
     - toolchain
+    - posix  # [win]
+    - m2w64-toolchain  # [win]
 
 test:
   commands:
-    - nnbathy -V
+    - nnbathy -V  # [not win]
+    - nnbathy.exe -V  # [win]
+    - minell -V  # [not win]
+    - minell.exe -V  # [win]
     - conda inspect linkages -p $PREFIX nn  # [not win]
     - conda inspect objects -p $PREFIX nn  # [osx]
 
 about:
   home: https://github.com/sakov/nn-c
   license: BSD 2-Clause (bundled triangle code is non-free for commercial use)
+  # license_file: LICENSE
   summary: 'Natural Neighbours interpolation.'
 
 extra:

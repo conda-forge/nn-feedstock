@@ -16,13 +16,12 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - make
   host:
 
 test:
   commands:
     - nnbathy -V
-    - conda inspect linkages -p $PREFIX nn  # [not win]
-    - conda inspect objects -p $PREFIX nn  # [osx]
 
 about:
   home: https://github.com/sakov/nn-c

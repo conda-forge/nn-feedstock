@@ -21,6 +21,12 @@ if errorlevel 1 exit 1
 cl /nologo /O2 /I. /DME_STANDALONE minell.c /Fe:minell.exe
 if errorlevel 1 exit 1
 
+:: rattler-build does not pre-create the Library install directories
+for %%d in ("%LIBRARY_LIB%" "%LIBRARY_INC%" "%LIBRARY_BIN%") do (
+    if not exist %%d mkdir %%d
+    if errorlevel 1 exit 1
+)
+
 copy nn.lib %LIBRARY_LIB%\
 if errorlevel 1 exit 1
 copy nn.h %LIBRARY_INC%\

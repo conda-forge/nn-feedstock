@@ -11,6 +11,12 @@ package:
 source:
   url: https://github.com/sakov/nn-c/archive/${{ commit }}.tar.gz
   sha256: eb00f951bbe36e933d16de520db44acf93e9becf6e0182e391c1c7f98441972b
+  patches:
+    # Backport of upstream nn-c commit 283e997 (in v2.0.10) to avoid pointer
+    # truncation on win-64, where unsigned long is 32 bit
+    - patches/changes-to-use-size_t-instead-of-unsigned-long-to-po.patch
+    - patches/use-the-c99-math-functions-of-the-msvc-runtime.patch
+    - patches/provide-gettimeofday-for-the-standalone-minell-with-.patch
 
 build:
   number: 2004

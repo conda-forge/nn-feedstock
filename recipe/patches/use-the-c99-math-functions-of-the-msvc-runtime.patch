@@ -1,0 +1,29 @@
+From 727ab48d585749923fd4312145b3a263ec161fa8 Mon Sep 17 00:00:00 2001
+From: Matthew Feickert <matthew.feickert@cern.ch>
+Date: Thu, 19 Nov 2026 13:54:34 -0600
+Subject: [PATCH 2/3] Use the C99 math functions of the MSVC runtime
+
+Since Visual Studio 2013 the MSVC C runtime provides the C99 isnan(),
+copysign() and rint() functions, so the macros that replaced them are no
+longer needed. The rint() replacement was also incorrect: `(int)`
+truncates towards zero instead of rounding to the nearest integer, which
+changes the grid snapping in points_generate() in nncommon.c.
+---
+ nn/config.h.in | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/nn/config.h.in b/nn/config.h.in
+index 6a48310..73be23a 100644
+--- a/nn/config.h.in
++++ b/nn/config.h.in
+@@ -1,7 +1,4 @@
+ #if defined(_WIN32)
+-#define isnan _isnan
+-#define copysign _copysign
+-#define rint (int)
+ #define M_PI 3.14159265358979323846
+ #define TRILIBRARY
+ #define NO_TIMER
+-- 
+2.56.1
+

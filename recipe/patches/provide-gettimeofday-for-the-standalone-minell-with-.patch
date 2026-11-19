@@ -1,0 +1,60 @@
+From a078eac346069b31dbc7f6c2c4ca0b739d101a04 Mon Sep 17 00:00:00 2001
+From: Matthew Feickert <matthew.feickert@cern.ch>
+Date: Thu, 19 Nov 2026 13:54:34 -0600
+Subject: [PATCH 3/3] Provide gettimeofday() for the standalone minell with
+ MSVC
+
+MSVC does not provide <sys/time.h> or gettimeofday(), which the
+standalone minell utility (ME_STANDALONE) uses for timing and for the
+random seed. Implement the needed subset with C11 timespec_get().
+MinGW provides both, so it keeps using <sys/time.h>.
+---
+ nn/minell.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+diff --git a/nn/minell.c b/nn/minell.c
+index e364b9d..62bae1d 100644
+--- a/nn/minell.c
++++ b/nn/minell.c
+@@ -1010,7 +1010,38 @@ void minell_rescalepoints(minell* me, int n, point points[])
+ 
+ #if defined(ME_STANDALONE)
+ 
++#if defined(_MSC_VER)
++/*
++ * MSVC has no <sys/time.h>, so provide the subset of gettimeofday() that
++ * main() uses (wall clock time in seconds and microseconds) via C11
++ * timespec_get().
++ */
++#include <time.h>
++
++struct timeval {
++    long tv_sec;
++    long tv_usec;
++};
++
++struct timezone {
++    int tz_minuteswest;
++    int tz_dsttime;
++};
++
++static int gettimeofday(struct timeval* tv, struct timezone* tz)
++{
++    struct timespec ts;
++
++    (void) tz;
++    if (timespec_get(&ts, TIME_UTC) != TIME_UTC)
++        return -1;
++    tv->tv_sec = (long) ts.tv_sec;
++    tv->tv_usec = ts.tv_nsec / 1000;
++    return 0;
++}
++#else
+ #include <sys/time.h>
++#endif
+ 
+ int userandomseed = 0;
+ int test = 0;
+-- 
+2.56.1
+

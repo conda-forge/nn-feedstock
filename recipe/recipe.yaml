@@ -19,7 +19,7 @@ source:
     - patches/provide-gettimeofday-for-the-standalone-minell-with-.patch
 
 build:
-  number: 2004
+  number: 2005
 
 requirements:
   build:
@@ -32,6 +32,14 @@ requirements:
 tests:
   - script:
       - nnbathy -V
+  # Run interpolations that use the Delaunay triangulation, which hangs if
+  # triangle.c is compiled with fused multiply-add contraction.
+  - files:
+      source:
+        - nn/examples/2/data.txt
+    script:
+      - nnbathy -i nn/examples/2/data.txt -n 64x64 -P alg=l > lin.txt
+      - nnbathy -i nn/examples/2/data.txt -n 64x64 > nn.txt
   - package_contents:
       bin:
         - nnbathy
